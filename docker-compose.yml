@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  public: # ingress
+    image: ctrlpy/angularweb:latest
+    ports:
+      - "8080:80"
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/defaul.conf
+  devops-be:
+    image: ctrlpy/node-server:latest
