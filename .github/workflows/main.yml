@@ -1,0 +1,29 @@
+name: Release
+
+on:
+  push:
+    branches:
+      - main
+      - next
+      - beta
+      - "*.x"
+env:
+  DOCKER_USERNAME: ctrlpy
+  DOCKER_REPOSITORY_NAME: node-server
+
+
+jobs:
+
+
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+      - run: npm install -g semantic-release @semantic-release/exec semantic-release-plus
+      - run: semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
