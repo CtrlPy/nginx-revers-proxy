@@ -9,10 +9,9 @@ module.exports = {
             "@semantic-release/exec",
             {
                 "prepareCmd": "scripts/prepare.sh ${nextRelease.version}",
-                "successCmd": "scripts/success.sh ${nextRelease.version}"
             }
         ],
-        
+
         [
             "@semantic-release/release-notes-generator"
         ],
